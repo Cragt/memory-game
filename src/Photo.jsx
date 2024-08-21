@@ -1,12 +1,11 @@
 import React from "react";
 
 const Photo = (props) => {
+  return (
+    <section className="photo">
+      <img src={props.url} alt="Zelda Photo" />
+    </section>
+  );
+};
 
-    return (
-        <section>
-            <img src={props.url} alt="doggo photo"/>
-        </section>
-    )
-}
-
-export default Photo
+export default Photo;

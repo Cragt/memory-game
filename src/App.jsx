@@ -59,24 +59,44 @@ class App extends Component {
     this.state = {
       photos: [],
     };
+    this.fetchInitiated = false;
   }
 
   componentDidMount() {
-    fetch("https://api.thecatapi.com/v1/images/search?limit=10").then(
-      (response) => {
-        if (!response.ok) {
-          throw Error("Error fetching json data");
-        }
-        return response
-          .json()
-          .then((allData) => {
-            this.setState({ photos: allData });
-          })
-          .catch((err) => {
-            throw Error(err.message);
-          });
-      }
-    );
+    if (this.fetchInitiated) return;
+    this.fetchInitiated = true;
+
+    const imageBaseUrl = `https://botw-compendium.herokuapp.com/api/v3/compendium/entry/`;
+    const fetchPromises = characters.map((character) => {
+      const imageUrl = `${imageBaseUrl}${character.id}/image`;
+
+      return fetch(imageUrl)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Error fetching image for ID ${character.id}`);
+          }
+          return response.url;
+        })
+        .then((imageUrl) => ({
+          id: character.id,
+          image: imageUrl,
+        }))
+        .catch((error) => {
+          console.error(
+            `Failed to fetch image for ID ${character.id}: `,
+            error
+          );
+          return { id: character.id, image: "" };
+        });
+    });
+
+    Promise.all(fetchPromises)
+      .then((results) => {
+        this.setState({ photos: results });
+      })
+      .catch((err) => {
+        console.error("Error fetching data: ", err.message);
+      });
   }
 
   render() {
