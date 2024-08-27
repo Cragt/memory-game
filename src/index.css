@@ -27,7 +27,7 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 h1 {
@@ -65,4 +65,26 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.photo-container {
+  padding: 10px;
+  border-radius: 2%;
+  background-color: bisque;
+  display: grid;
+
+  grid-template:
+    "a b c d"
+    "e f g h"
+    "i j k l";
+}
+
+img {
+  border-radius: 5%;
+  margin: 5px;
+}
+
+.photo {
+  display: grid;
+  place-items: center;
 }
