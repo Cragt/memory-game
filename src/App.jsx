@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import PhotoContainer from "./PhotoContainer.jsx";
+import GameState from "./GameState.jsx";
 
 let characters = [
   {
@@ -102,8 +103,7 @@ class App extends Component {
   render() {
     return (
       <section className="app">
-        <p>Is this working?</p>
-        <PhotoContainer photos={this.state.photos} />
+        <GameState photos={this.state.photos} />
       </section>
     );
   }
