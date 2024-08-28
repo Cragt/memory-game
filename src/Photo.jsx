@@ -1,9 +1,15 @@
 import React from "react";
 
-const Photo = (props) => {
+const Photo = ({ url, checkClicked, id }) => {
   return (
     <section className="photo">
-      <img src={props.url} alt="Zelda Photo" />
+      <img
+        src={url}
+        alt="Zelda Photo"
+        onClick={() => {
+          checkClicked(id);
+        }}
+      />
     </section>
   );
 };
