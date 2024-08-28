@@ -1,11 +1,16 @@
 import React from "react";
 import Photo from "./Photo.jsx";
 
-const PhotoContainer = (props) => {
+const PhotoContainer = ({ photos, checkClicked }) => {
   const displayPhotos = () => {
-    return props.photos.map((photo) => {
-      return <Photo url={photo.image} key={photo.id} />;
-    });
+    return photos.map((photo) => (
+      <Photo
+        url={photo.image}
+        key={photo.id}
+        id={photo.id}
+        checkClicked={checkClicked}
+      />
+    ));
   };
 
   return <section className="photo-container">{displayPhotos()}</section>;
