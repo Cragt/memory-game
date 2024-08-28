@@ -22,6 +22,11 @@ export default function GameState({ photos }) {
 
   const handleShuffle = () => {
     setShuffledPhotos(shuffleArray(shuffledPhotos));
+    console.log(shuffledPhotos);
+  };
+
+  const handleClick = (id) => {
+    console.log(id);
   };
 
   return (
@@ -29,7 +34,7 @@ export default function GameState({ photos }) {
       <p>
         {score} of {photos.length}
       </p>
-      <PhotoContainer photos={shuffledPhotos} />
+      <PhotoContainer photos={shuffledPhotos} checkClicked={handleClick} />
       <button onClick={handleShuffle}>Shuffle</button>
     </>
   );
