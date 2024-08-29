@@ -4,6 +4,12 @@ import PhotoContainer from "./PhotoContainer";
 export default function GameState({ photos }) {
   const [shuffledPhotos, setShuffledPhotos] = useState([]);
   const [score, setScore] = useState(0);
+  const [pickedPictures, setPickedPictures] = useState([]);
+
+  const resetGame = () => {
+    setScore(0);
+    setPickedPictures([]);
+  };
 
   const shuffleArray = (array) => {
     const newArray = [...array];
@@ -26,14 +32,25 @@ export default function GameState({ photos }) {
   };
 
   const handleClick = (id) => {
-    console.log(id);
+    handleShuffle();
+    if (!pickedPictures.includes(id)) {
+      setScore((score) => score + 1);
+      setPickedPictures((picked) => [...picked, id]);
+    } else {
+      resetGame();
+    }
   };
 
   return (
     <>
-      <p>
-        {score} of {photos.length}
-      </p>
+      {score === 12 ? (
+        <p>You win!</p>
+      ) : (
+        <p>
+          {" "}
+          {score} of {photos.length}{" "}
+        </p>
+      )}
       <PhotoContainer photos={shuffledPhotos} checkClicked={handleClick} />
       <button onClick={handleShuffle}>Shuffle</button>
     </>
