@@ -88,3 +88,12 @@ img {
   display: grid;
   place-items: center;
 }
+
+.welcome-box {
+  text-align: left;
+}
+
+.welcome-box > button {
+  display: block;
+  margin: 50px auto 0;
+}
