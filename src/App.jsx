@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-import PhotoContainer from "./PhotoContainer.jsx";
 import GameState from "./GameState.jsx";
+
 
 let characters = [
   {
