@@ -28,7 +28,6 @@ export default function GameState({ photos }) {
 
   const handleShuffle = () => {
     setShuffledPhotos(shuffleArray(shuffledPhotos));
-    console.log(shuffledPhotos);
   };
 
   const handleClick = (id) => {
@@ -47,8 +46,7 @@ export default function GameState({ photos }) {
         <p>You win!</p>
       ) : (
         <p>
-          {" "}
-          {score} of {photos.length}{" "}
+          {score} of {photos.length}
         </p>
       )}
       <PhotoContainer photos={shuffledPhotos} checkClicked={handleClick} />
