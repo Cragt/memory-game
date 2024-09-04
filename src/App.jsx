@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
 import GameState from "./GameState.jsx";
-
 
 let characters = [
   {
