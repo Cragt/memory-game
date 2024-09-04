@@ -28,6 +28,11 @@ body {
   place-items: center;
   min-width: 320px;
   height: 100vh;
+  flex-direction: column;
+}
+
+.app {
+  display: grid;
 }
 
 h1 {
@@ -68,25 +73,25 @@ button:focus-visible {
 }
 
 .photo-container {
+  /* display: grid; */
+  gap: 10px;
+  columns: 4;
   padding: 10px;
-  border-radius: 2%;
   background-color: bisque;
-  display: grid;
+  width: 100%;
+  box-sizing: border-box;
+}
 
-  grid-template:
-    "a b c d"
-    "e f g h"
-    "i j k l";
+.photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 img {
   border-radius: 5%;
-  margin: 5px;
-}
-
-.photo {
-  display: grid;
-  place-items: center;
+  width: 100%;
+  height: auto;
 }
 
 .welcome-box {
